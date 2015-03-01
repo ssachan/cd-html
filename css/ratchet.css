@@ -300,7 +300,7 @@ a:active {
 }
 
 .content-padded {
-  margin: 10px;
+  margin: 15px;
 }
 
 .text-center {
@@ -741,6 +741,7 @@ input[type="button"] {
   padding: 11px 65px 11px 15px;
   overflow: hidden;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  min-height: 75px;
 }
 .table-view-cell:last-child {
   border-bottom: 0;

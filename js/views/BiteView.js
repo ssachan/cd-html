@@ -1,6 +1,6 @@
 app.views.BiteView = Backbone.View.extend({
 
-    className :'content-padded',
+    className: 'content-padded',
 
     initialize: function() {
         this.listenTo(this.model, "change", this.render);
@@ -15,10 +15,16 @@ app.views.BiteView = Backbone.View.extend({
         this.model.get('isSaved') == false ? this.model.set('isSaved', true) : this.model.set('isSaved', false);
     },
 
-    whatsappShare: function() {
-        //window.plugins.socialsharing.shareViaWhatsApp(app.safe_tags_regex(this.model.get('post_content')), null, this.model.get('link'), function() {console.log('share ok')}, function(errormsg){alert(errormsg)}); 
-        //window.analytics.trackEvent('WhatsApp Share', 'touch', 'id-'+this.model.get('id'));
+    makeSafe: function(str) {
+        var text = str.replace(/(<([^>]+)>)/ig, "<br>");
+        text = encodeURI(text);
+        text = text.replace(/%20/g, ' ').replace(/%[a-zA-Z0-9][a-zA-Z0-9]/g, ' ');
+        return text = (text + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+    },
 
+    whatsappShare: function() {
+        window.plugins.socialsharing.shareViaWhatsApp(this.makeSafe(this.model.get('post_content')), null, this.model.get('link'), function() {console.log('share ok')}, function(errormsg){alert(errormsg)}); 
+        window.analytics.trackEvent('WhatsApp Share', 'touch', 'id-'+this.model.id);
     },
 
     render: function() {

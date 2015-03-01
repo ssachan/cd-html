@@ -8,22 +8,19 @@ app.routers.AppRouter = Backbone.Router.extend({
     },
 
     initialize: function() {
-        //console.log('called');
-        //app.slider = new PageSlider($('#cid'));
-        allBites.fetchLatest();        
-        /*if(localStorage.getItem('minId') == null && localStorage.getItem('maxId')==null){
+        //console.log('init');
+        //allBites.fetchLatest();
+        if(localStorage.getItem('minId') == null && localStorage.getItem('maxId')==null){
             //app being loaded for the first time.
             allBites.firstFetch();
         }else{
             allBites.fetch();            
-        }*/
-        //allBites.fetch();
+        }
         activeBites = allBites;
     },
 
     home: function() {
         $('#cid').empty();
-        //allBites.fetchLatest();
         activeBites = allBites;
         app.BiteListView = new app.views.BiteListView({
             model: activeBites

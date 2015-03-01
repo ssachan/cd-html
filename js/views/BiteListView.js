@@ -12,11 +12,11 @@ app.views.BiteListView = Backbone.View.extend({
 
     render:function () {
         this.$el.empty();
-        this.$el.append('<li class="table-view-divider"> <button id="loadLatest" class="btn btn-positive">Load Latest</button></li>');
+        this.$el.append('<li class="table-view-divider"><button id="loadLatest" class="btn btn-positive">Load Latest</button><span id="loadLatestErr" class="badge" style="margin-left: 20px;display:none">No new bites, try again later !</span></li>');
         _.each(this.model.models, function (bite) {
             this.$el.append(new app.views.BiteListItemView({model:bite}).render().el);
         }, this);
-        this.$el.append('<li class="table-view-divider"><button id="loadPrevious" class="btn btn-positive">Load Previous</button></li>');
+        this.$el.append('<li class="table-view-divider"><button id="loadPrevious" class="btn btn-positive">Load Previous</button><span id="loadPreviousErr" class="badge" style="margin-left: 20px;display:none">No more old bites!</span></li>');
         return this;
     },
 
