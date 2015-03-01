@@ -1,0 +1,18 @@
+    <h4 class="clearfix" style="line-height: 2;color:<%=ccolor%>;">
+    	<span class="badge category" style="background-color:<%=ccolor%>;"> </span>
+    	<%=category%>
+    	  <% if (isSaved == true) { %>
+    	<a class="icon pull-right save saved"></a><a class="icon whatsapp pull-right"></a>
+    	 <% }else{ %>
+    	<a class="icon pull-right save"></a><a class="icon whatsapp pull-right"></a>
+    	  <% } %>
+    </h4>
+    <h3><%= post_title %></h3>
+    <%=post_content%>
+        <% if (link) { %>
+            <div class="source">Source:
+                <a href="<%=link%>" data-ignore="push">
+                    <%=source%>
+                </a>
+            </div>
+        <% } %>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="css/ratchet.css" rel="stylesheet">
+    <!--<link href="ratchet/ratchet-theme-android.css" rel="stylesheet">-->
+</head>
+
+<body>
+    <header class="bar bar-nav bar-main">
+        <a class="icon icon-home pull-left" href="#" data-ignore="push"></a>
+        <a class="icon icon-bars pull-right" href="#settingsModal"></a>
+        <h1 class="title"><img src="img/cd-w.png" class="logo"></h1>
+    </header>
+    <div class="content" id="cid"></div>
+
+    <div id="popoverLegend" class="popover">
+        <header class="bar bar-nav">
+            <h1 class="title">Legend</h1>
+        </header>
+        <ul class="table-view">
+            <li class="table-view-cell">Item1</li>
+            <li class="table-view-cell">Item2</li>
+            <li class="table-view-cell">Item3</li>
+            <li class="table-view-cell">Item4</li>
+            <li class="table-view-cell">Item5</li>
+            <li class="table-view-cell">Item6</li>
+            <li class="table-view-cell">Item7</li>
+            <li class="table-view-cell">Item8</li>
+        </ul>
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#settingsModal"></a>
+            <h3 class="title">More</h3>
+        </header>
+        <div class="content">
+            <ul class="table-view">
+                <li class="table-view-cell media">
+                    <a class="navigate-right" href="#savedlist" data-ignore="push">
+                        <div class="media-body">Saved List</div>
+                    </a>
+                </li>
+                <li class="table-view-cell media">
+                    <a class="navigate-right" href="#unreadlist" data-ignore="push">
+                        <div class="media-body">Un-read List</div>
+                    </a>
+                </li>
+            </ul>
+            <div class="profile">
+                <h4 class="content-padded">Profile</h4>
+                <form class="input-group">
+                    <input type="text" placeholder="Rini Roy" id="fn" disabled="">
+                    <input type="email" placeholder="r.roy@outlook.in" id="email" disabled="">
+                </form>
+            </div>
+        </div>
+        <!-- /.modal -->
+    </div>
+
+    <script src="lib/zepto.min.js"></script>
+    <script src="lib/callbacks.js"></script>
+    <script src="lib/deferred.js"></script>
+    <script src="lib/lodash.min.js"></script>
+    <script src="lib/backbone.min.js"></script>
+    <script src="lib/backbone.localstorage-min.js"></script>
+
+    <script src="lib/ratchet.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/utils/templates.js"></script>
+    <script src="js/models/BiteModel.js"></script>
+    <script src="js/AppRouter.js"></script>
+    <script src="js/views/BiteListView.js"></script>
+    <script src="js/views/BiteView.js"></script>
+
+</body>
+
+</html>
