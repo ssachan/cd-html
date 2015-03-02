@@ -1,7 +1,9 @@
 app.routers.AppRouter = Backbone.Router.extend({
 
     routes: {
-        "": "home",
+        "": "index",
+        "login": "login",
+        "home": "home",
         "bite/:id": "bite",
         "savedlist": "savedList",
         "unreadlist": "unreadList"
@@ -17,18 +19,33 @@ app.routers.AppRouter = Backbone.Router.extend({
             if (fSize == 'large') $('body').css('font-size', '1.8em');
             else $('body').css('font-size', '1.2em')
         }
-        //account.trySilentLogin();
+    },
+
+    index: function() {
+        //alert('yo');
+        account.trySilentLogin();
+        //this.home();
+    },
+
+    login: function() {
+        $('.bar-main').hide();
+        app.SplashScreenView = new app.views.SplashScreenView({
+            model: account,
+            el: $('#cid')
+        });
+        app.SplashScreenView.render();
+        //$('#cid').html(app.SplashScreenView.render().el);
+    },
+
+    home: function() {
+        $('.bar-main').show();
+        $('#cid').removeClass('splash');
         if (localStorage.getItem('minId') == null && localStorage.getItem('maxId') == null) {
             //app being loaded for the first time.
             allBites.firstFetch();
         } else {
             allBites.fetch();
         }
-        activeBites = allBites;
-    },
-
-    home: function() {
-        $('#cid').empty();
         activeBites = allBites;
         app.BiteListView = new app.views.BiteListView({
             model: activeBites
@@ -37,7 +54,8 @@ app.routers.AppRouter = Backbone.Router.extend({
     },
 
     savedList: function() {
-        $('#cid').empty();
+        $('.bar-main').show();
+        $('#cid').removeClass('splash');
         $('#settingsModal').removeClass('active');
         activeBites = new app.models.BiteCollection(allBites.where({
             isSaved: true
@@ -45,10 +63,13 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.BiteListView = new app.views.BiteListView({
             model: activeBites
         });
+        $('#cid').html(app.BiteListView.render().el);
+        $('.table-view-divider').hide();
     },
 
     unreadList: function() {
-        $('#cid').empty();
+        $('.bar-main').show();
+        $('#cid').removeClass('splash');
         $('#settingsModal').removeClass('active');
         activeBites = new app.models.BiteCollection(allBites.where({
             isRead: false
@@ -56,9 +77,13 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.BiteListView = new app.views.BiteListView({
             model: activeBites
         });
+        $('#cid').html(app.BiteListView.render().el);
+        $('.table-view-divider').hide();
     },
 
     bite: function(id) {
+        $('.bar-main').show();
+        $('#cid').removeClass('splash');
         var bite = activeBites.get({
             id: id
         });
@@ -80,7 +105,6 @@ app.routers.AppRouter = Backbone.Router.extend({
             $('#cid').append('<a href="#bite/' + previousModel.id + '" class="circle-nav navigate-left circle-small circle-left"></a>');
         }
         bite.set('isRead', true);
-
     }
 
 });

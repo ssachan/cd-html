@@ -1,3 +1,59 @@
+app.models.Account = Backbone.Model.extend({
+    initialize: function() {},
+
+    onLogin: function(obj) {
+        localStorage.setItem('displayname', obj.displayName);
+        localStorage.setItem('email', obj.email);
+        //try sending the details to the DB
+        var self = this;
+        $.ajax({
+            type: "POST",
+            url: env.url + 'wp-admin/admin-ajax.php?action=postUserData',
+            data: obj,
+            success: function(data) {
+
+            }
+        })
+        document.getElementById('fn').value = localStorage.getItem('displayname');
+        document.getElementById('email').value = localStorage.getItem('email');
+        app.router.navigate("home", {
+            trigger: true
+        });
+    },
+    success: function(e) {
+        //do nothing
+
+    },
+    login: function() {
+        window.plugins.googleplus.login({}, this.onLogin,
+            function(msg) {
+                window.analytics.trackException("Login Failed " + msg, true);
+                app.router.navigate("home", {
+                    trigger: true
+                });
+            }
+        );
+    },
+
+    logout: function() {
+        window.plugins.googleplus.logout(
+            function(msg) {
+                //logged out
+            }
+        );
+    },
+
+    trySilentLogin: function() {
+        window.plugins.googleplus.trySilentLogin({}, this.onLogin,
+            function(msg) {
+                app.router.login();
+            }
+        );
+    },
+
+});
+
+
 
 app.models.Bite = Backbone.Model.extend({
 
@@ -41,7 +97,10 @@ app.models.Bite = Backbone.Model.extend({
         var tagClassMap = {
             "mrunal": "badge-mrunal",
             "gktoday": "badge-gktoday",
-            "forumias": "badge-forumias"
+            "forumias": "badge-forumias",
+            "wiki": 'badge-wiki',
+            "pib": 'badge-pib',
+            "insights": 'badge-insights',
         }
         if (tagClassMap[tag] != null) {
             return tagClassMap[tag];
@@ -79,6 +138,10 @@ app.models.BiteCollection = Backbone.Collection.extend({
         return -parseInt(model.id);
     },
 
+    error: function(xhr, msg, url) {
+        window.analytics.trackException(xhr.status + ", " + msg + ", url-" + url, false);
+    },
+
     firstFetch: function() {
         var url = env.url + 'wp-admin/admin-ajax.php?action=getMoreBites';
         var self = this;
@@ -95,10 +158,7 @@ app.models.BiteCollection = Backbone.Collection.extend({
                 }
             },
             error: function(xhr, msg) {
-                alert(xhr.status + ", " + msg);
-                if (xhr.status == 0 || xhr.status == "0") {
-                    alert(xhr.responseText); // always blank, if runs
-                }
+                self.error(xhr, msg, url);
             }
         });
     },
@@ -127,6 +187,9 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     }, 5000);
 
                 }
+            },
+            error: function(xhr, msg) {
+                self.error(xhr, msg, url);
             }
         });
     },
@@ -153,10 +216,14 @@ app.models.BiteCollection = Backbone.Collection.extend({
                         $("#loadPreviousErr").hide();
                     }, 5000);
                 }
+            },
+            error: function(xhr, msg) {
+                self.error(xhr, msg, url);
             }
         });
     }
 });
 
+var account = new app.models.Account();
 var allBites = new app.models.BiteCollection();
 var activeBites;

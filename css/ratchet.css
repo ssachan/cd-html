@@ -1657,6 +1657,20 @@ h3.msg{
   border-radius: 2px;
 }
 
+.badge-insights {
+  color: #1e73be;
+  border: 1px solid #1e73be;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+}
+
+.badge-wiki,.badge-pib {
+  color: rgba(0,0,0,0.6);
+  border: 1px solid #f0f0f0;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+
 .font-pref{
   width: 30px;
   text-align: center;
@@ -1675,3 +1689,4 @@ h3.msg{
 .font-pref.selected{
     background: rgba(0,0,0,0.1);
 }
+

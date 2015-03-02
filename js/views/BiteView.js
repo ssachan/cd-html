@@ -13,6 +13,7 @@ app.views.BiteView = Backbone.View.extend({
 
     save: function() {
         this.model.get('isSaved') == false ? this.model.set('isSaved', true) : this.model.set('isSaved', false);
+        window.analytics.trackEvent('WhatsApp Share', '', 'id-' + this.model.id);
     },
 
     makeSafe: function(str) {
@@ -24,13 +25,17 @@ app.views.BiteView = Backbone.View.extend({
 
     whatsappShare: function() {
         console.log(this.makeSafe(this.model.get('post_content')));
-        window.plugins.socialsharing.shareViaWhatsApp(this.makeSafe(this.model.get('post_content')), null, this.model.get('link'), function() {console.log('share ok')}, function(errormsg){alert(errormsg)}); 
-        window.analytics.trackEvent('WhatsApp Share', 'touch', 'id-'+this.model.id);
+        window.plugins.socialsharing.shareViaWhatsApp(this.makeSafe(this.model.get('post_content')), null, this.model.get('link'), function() {
+            console.log('share ok')
+        }, function(errormsg) {
+            alert(errormsg)
+        });
+        window.analytics.trackEvent('WhatsApp Share', '', 'id-' + this.model.id);
     },
 
     render: function() {
         this.$el.html(this.template(this.model.attributes));
         return this;
     }
-    
+
 });
