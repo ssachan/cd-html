@@ -338,11 +338,11 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 24px;
+  font-size: 1.2em;
 }
 
 h4, .h4 {
-  font-size: 18px;
+  font-size: .9em;
 }
 
 h5, .h5 {
@@ -367,7 +367,7 @@ p {
   display: inline-block;
   padding: 6px 8px 7px;
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: .6em;
   font-weight: 400;
   line-height: 1;
   color: #333;
@@ -659,8 +659,8 @@ input[type="button"] {
 
 .badge {
   display: inline-block;
-  padding: 2px 9px 3px;
-  font-size: 12px;
+  padding: 2px 4px 3px;
+  font-size: .7em;
   line-height: 1;
   color: #333;
   background-color: rgba(0, 0, 0, .15);
@@ -1494,7 +1494,7 @@ body {
 }
 
 .source {
-    font-size: 18px;
+    font-size: .9em;
     color: #777;
     margin-top: 20px;
 }
@@ -1633,4 +1633,45 @@ h3.msg{
 .successmsg{
     display:none;
     border-radius: 0px;
+}
+
+
+.badge-mrunal {
+  color: #B87333;
+  border: 1px solid #e6d1b4;
+  background: #fdf6e4;
+  border-radius: 2px;
+}
+
+.badge-gktoday {
+  color: #1e73be;
+  border: 1px solid #2DB9F2;
+  background: #F0F8FF;
+  border-radius: 2px;
+}
+
+.badge-forumias {
+  color: #694489;
+  border: 1px solid #bebde9;
+  background: #FDF8FF;
+  border-radius: 2px;
+}
+
+.font-pref{
+  width: 30px;
+  text-align: center;
+}
+
+.font-pref.large{
+  margin-right: 15px;
+  font-size: 20px;  
+}
+
+.font-pref.small{
+  font-size: 16px;
+  padding: 3px 0px;
+}
+
+.font-pref.selected{
+    background: rgba(0,0,0,0.1);
 }

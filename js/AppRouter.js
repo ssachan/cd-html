@@ -10,11 +10,19 @@ app.routers.AppRouter = Backbone.Router.extend({
     initialize: function() {
         //console.log('init');
         //allBites.fetchLatest();
-        if(localStorage.getItem('minId') == null && localStorage.getItem('maxId')==null){
+        var fSize = localStorage.getItem('fs');
+        if (fSize == null) {
+            localStorage.setItem('fs', 'small');
+        } else {
+            if (fSize == 'large') $('body').css('font-size', '1.8em');
+            else $('body').css('font-size', '1.2em')
+        }
+        //account.trySilentLogin();
+        if (localStorage.getItem('minId') == null && localStorage.getItem('maxId') == null) {
             //app being loaded for the first time.
             allBites.firstFetch();
-        }else{
-            allBites.fetch();            
+        } else {
+            allBites.fetch();
         }
         activeBites = allBites;
     },

@@ -1,3 +1,4 @@
+
 app.models.Bite = Backbone.Model.extend({
 
     defaults: {
@@ -35,8 +36,22 @@ app.models.Bite = Backbone.Model.extend({
         "World": "#FF6103",
     },
 
+
+    tagToClassName: function(tag) {
+        var tagClassMap = {
+            "mrunal": "badge-mrunal",
+            "gktoday": "badge-gktoday",
+            "forumias": "badge-forumias"
+        }
+        if (tagClassMap[tag] != null) {
+            return tagClassMap[tag];
+        }
+        return 'badge-primary'
+    },
+
     initialize: function() {
         this.set('ccolor', this.categoryColorMap[this.get('category')]);
+        this.set('tagclass', this.tagToClassName(this.get('tags')));
         this.set('source', this.parseSourceName(this.get('link')));
         this.on('change:isSaved', function(model) {
             model.save();
