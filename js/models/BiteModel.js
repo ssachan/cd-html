@@ -1,4 +1,5 @@
 app.models.Account = Backbone.Model.extend({
+
     initialize: function() {},
 
     onLogin: function(obj) {
@@ -20,10 +21,12 @@ app.models.Account = Backbone.Model.extend({
             trigger: true
         });
     },
+
     success: function(e) {
         //do nothing
 
     },
+
     login: function() {
         window.plugins.googleplus.login({}, this.onLogin,
             function(msg) {
@@ -57,9 +60,12 @@ app.models.Account = Backbone.Model.extend({
 
 app.models.Bite = Backbone.Model.extend({
 
+    urlRoot: env.url + 'wp-admin/admin-ajax.php?action=getBite&id=',
+
     defaults: {
         isSaved: false,
-        isRead: false
+        isRead: false,
+        post_title: '',
     },
 
     parseSourceName: function(link) {
@@ -74,7 +80,7 @@ app.models.Bite = Backbone.Model.extend({
             "indianexpress.com": "The Indian Express"
         };
         for (str in sourceMap) {
-            if (link.indexOf(str) > -1) {
+            if (link != null && link.indexOf(str) > -1) {
                 return sourceMap[str];
             }
         }
@@ -112,6 +118,15 @@ app.models.Bite = Backbone.Model.extend({
         this.set('ccolor', this.categoryColorMap[this.get('category')]);
         this.set('tagclass', this.tagToClassName(this.get('tags')));
         this.set('source', this.parseSourceName(this.get('link')));
+        this.on('change:category', function(model) {
+            this.set('ccolor', this.categoryColorMap[this.get('category')]);
+        });
+        this.on('change:tags', function(model) {
+            this.set('tagclass', this.tagToClassName(this.get('tags')));
+        });
+        this.on('change:link', function(model) {
+            this.set('source', this.parseSourceName(this.get('link')));
+        });
         this.on('change:isSaved', function(model) {
             model.save();
         });

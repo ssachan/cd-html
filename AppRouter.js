@@ -23,8 +23,8 @@ app.routers.AppRouter = Backbone.Router.extend({
 
     index: function() {
         //alert('yo');
-        account.trySilentLogin();
-        //this.home();
+        //account.trySilentLogin();
+        this.home();
     },
 
     login: function() {
@@ -84,13 +84,15 @@ app.routers.AppRouter = Backbone.Router.extend({
     bite: function(id) {
         $('.bar-main').show();
         $('#cid').removeClass('splash');
-        var bite = activeBites.get({
-            id: id
-        });
-        // Note that we could also 'recycle' the same instance of EmployeeFullView
-        // instead of creating new instances
-        $('#cid').empty();
-
+        var bite;
+        if (activeBites == null) {
+            bite = new app.models.Bite({id:id});
+            bite.fetch({ ajaxSync: true });
+        } else {
+            bite = activeBites.get({
+                id: id
+            });
+        }
         $('#cid').html(new app.views.BiteView({
             model: bite
         }).render().$el);
@@ -106,5 +108,4 @@ app.routers.AppRouter = Backbone.Router.extend({
         }
         bite.set('isRead', true);
     }
-
 });

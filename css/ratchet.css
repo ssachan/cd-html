@@ -741,7 +741,6 @@ input[type="button"] {
   padding: 11px 65px 11px 15px;
   overflow: hidden;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  min-height: 75px;
 }
 .table-view-cell:last-child {
   border-bottom: 0;
@@ -750,9 +749,10 @@ input[type="button"] {
   position: relative;
   display: block;
   padding: inherit;
-  margin: -11px -65px -11px -15px;
+  margin: -11px -64px -11px -15px;
   overflow: hidden;
   color: inherit;
+  min-height: 75px;
 }
 .table-view-cell > a:not(.btn):active {
   background-color: #eee;
@@ -1667,7 +1667,7 @@ h3.msg{
 .badge-wiki,.badge-pib {
   color: rgba(0,0,0,0.6);
   border: 1px solid #f0f0f0;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.01);
   border-radius: 2px;
 }
 
