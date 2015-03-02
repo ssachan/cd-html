@@ -3,7 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <link href="css/ratchet.css" rel="stylesheet">
     <!--<link href="ratchet/ratchet-theme-android.css" rel="stylesheet">-->
 </head>
@@ -60,23 +66,20 @@
         </div>
         <!-- /.modal -->
     </div>
+    <script type="text/javascript" src="lib/zepto.min.js"></script>
+    <script type="text/javascript" src="lib/callbacks.js"></script>
+    <script type="text/javascript" src="lib/deferred.js"></script>
+    <script type="text/javascript" src="lib/lodash.min.js"></script>
+    <script type="text/javascript" src="lib/backbone.min.js"></script>
+    <script type="text/javascript" src="lib/backbone.localStorage-min.js"></script>
+    <script type="text/javascript" src="lib/ratchet.js"></script>
 
-    <script src="lib/zepto.min.js"></script>
-    <script src="lib/callbacks.js"></script>
-    <script src="lib/deferred.js"></script>
-    <script src="lib/lodash.min.js"></script>
-    <script src="lib/backbone.min.js"></script>
-    <script src="lib/backbone.localstorage-min.js"></script>
-
-    <script src="lib/ratchet.js"></script>
-
-    <script src="js/app.js"></script>
-    <script src="js/utils/templates.js"></script>
-    <script src="js/models/BiteModel.js"></script>
-    <script src="js/AppRouter.js"></script>
-    <script src="js/views/BiteListView.js"></script>
-    <script src="js/views/BiteView.js"></script>
-
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/models/BiteModel.js"></script>
+    <script type="text/javascript" src="js/utils/templates.js"></script>
+    <script type="text/javascript" src="js/views/BiteListView.js"></script>
+    <script type="text/javascript" src="js/views/BiteView.js"></script>
+    <script type="text/javascript" src="js/AppRouter.js"></script>
 </body>
 
 </html>

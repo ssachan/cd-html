@@ -2,7 +2,7 @@ app.models.Bite = Backbone.Model.extend({
 
     defaults: {
         isSaved: false,
-        isRead: false,
+        isRead: false
     },
 
     parseSourceName: function(link) {
@@ -15,7 +15,6 @@ app.models.Bite = Backbone.Model.extend({
             "bbc.com": "BBC",
             "business-standard.com": "Business Standard",
             "indianexpress.com": "The Indian Express"
-
         };
         for (str in sourceMap) {
             if (link.indexOf(str) > -1) {
@@ -67,7 +66,6 @@ app.models.BiteCollection = Backbone.Collection.extend({
 
     firstFetch: function() {
         var url = env.url + 'wp-admin/admin-ajax.php?action=getMoreBites';
-        //console.log('findByName: ' + key);
         var self = this;
         $.ajax({
             url: url,
@@ -79,6 +77,12 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     self.save();
                     localStorage.setItem('minId', data[data.length - 1].id);
                     localStorage.setItem('maxId', data[0].id);
+                }
+            },
+            error: function(xhr, msg) {
+                alert(xhr.status + ", " + msg);
+                if (xhr.status == 0 || xhr.status == "0") {
+                    alert(xhr.responseText); // always blank, if runs
                 }
             }
         });
@@ -124,7 +128,6 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     self.add(data);
                     self.save();
                     localStorage.setItem('minId', data[data.length - 1].id);
-                    /* check for max and update that too */
                     var maxId = localStorage.getItem('maxId');
                     if (maxId == null || (maxId != null && parseInt(maxId) < parseInt(data[0].id))) {
                         localStorage.setItem('maxId', data[0].id);
@@ -138,8 +141,6 @@ app.models.BiteCollection = Backbone.Collection.extend({
             }
         });
     }
-
-
 });
 
 var allBites = new app.models.BiteCollection();

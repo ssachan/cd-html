@@ -1,9 +1,7 @@
 app.utils.templates = (function() {
 
     var load = function(views, callback) {
-
         var deferreds = [];
-
         $.each(views, function(index, view) {
             if (app.views[view]) {
                 deferreds.push($.get('tpl/' + view + '.html', function(data) {
