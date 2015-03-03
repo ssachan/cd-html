@@ -12,12 +12,15 @@ app.views.BiteListView = Backbone.View.extend({
 
     render: function() {
         this.$el.empty();
-        this.$el.append('<li class="table-view-divider"><button id="loadLatest" class="btn btn-positive">Load Latest</button><span id="loadLatestErr" class="badge" style="margin-left: 20px;display:none">Nothing new added!</span><span class="pull-right font-pref large">A</span><span class="pull-right font-pref small">A</span></li>');
+        this.$el.append(this.template({
+            'fs': localStorage.getItem('fs')
+        }));
         _.each(this.model.models, function(bite) {
             this.$el.append(new app.views.BiteListItemView({
                 model: bite
             }).render().el);
         }, this);
+
         this.$el.append('<li class="table-view-divider"><button id="loadPrevious" class="btn btn-positive">Load Previous</button><span id="loadPreviousErr" class="badge" style="margin-left: 20px;display:none">No more old bites!</span></li>');
         return this;
     },
@@ -25,8 +28,8 @@ app.views.BiteListView = Backbone.View.extend({
     events: {
         "touchend #loadLatest": "loadLatest",
         "touchend #loadPrevious": "loadPrevious",
-        "touchend .font-pref.small": "toggleFontSizeToSmall",
-        "touchend .font-pref.large": "toggleFontSizeToLarge",
+        "touchend #font-small": "toggleFontSizeToSmall",
+        "touchend #font-large": "toggleFontSizeToLarge",
     },
 
     loadLatest: function() {
@@ -42,8 +45,6 @@ app.views.BiteListView = Backbone.View.extend({
         }
         $('body').css('font-size', '1.2em');
         localStorage.setItem('fs', 'small');
-        $('.font-pref.small').addClass('selected');
-        $('.font-pref.large').removeClass('selected');
     },
     toggleFontSizeToLarge: function() {
         if (localStorage.getItem('fs') == 'large') {
@@ -51,8 +52,6 @@ app.views.BiteListView = Backbone.View.extend({
         }
         $('body').css('font-size', '1.8em');
         localStorage.setItem('fs', 'large');
-        $('.font-pref.large').addClass('selected');
-        $('.font-pref.small').removeClass('selected');
     }
 });
 
@@ -63,13 +62,16 @@ app.views.BiteListItemView = Backbone.View.extend({
     className: "table-view-cell",
 
     initialize: function() {
-        this.model.on("change", this.render, this);
-        this.model.on("destroy", this.close, this);
+        this.model.on("change:added", this.animate, this);
     },
 
     render: function() {
         this.el.style.cssText = 'border-left:7px solid ' + this.model.get('ccolor') + ';';
         this.$el.html(this.template(this.model.attributes));
         return this;
+    },
+
+    animate : function(){
+        this.$el.animate({'background': "rgba(0,0,0,.04)"}, 2000);    
     }
 });

@@ -771,7 +771,7 @@ input[type="button"] {
   color: #999;
   background-color: #fafafa;
   border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .table-view .media,
@@ -931,13 +931,15 @@ select {
 
 .segmented-control {
   position: relative;
-  display: table;
+  display: inline-block;
   overflow: hidden;
   font-size: 12px;
   font-weight: 400;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 3px;
+  width: 80px;
+  margin-right: 10px;
 }
 .segmented-control .control-item {
   display: table-cell;
@@ -1591,12 +1593,12 @@ background-size: 70px;
 }
 
 .whatsapp:hover {
-background: url('../img/sprite.png') no-repeat 0px -36px;
+background: url('../img/sprite.png') no-repeat -2px -36px;
 background-size: 70px;
 }
 
 .whatsapp {
-background: url('../img/sprite.png') no-repeat 0px 0px;
+background: url('../img/sprite.png') no-repeat -2px -1px;
 display: inline-block;
 width: 35px;
 height: 35px;
@@ -1671,22 +1673,10 @@ h3.msg{
   border-radius: 2px;
 }
 
-.font-pref{
-  width: 30px;
-  text-align: center;
+#font-large{
+  font-size: 1.2em;
 }
 
-.font-pref.large{
-  margin-right: 15px;
-  font-size: 20px;  
+#font-small{
+  font-size: .9em;
 }
-
-.font-pref.small{
-  font-size: 16px;
-  padding: 3px 0px;
-}
-
-.font-pref.selected{
-    background: rgba(0,0,0,0.1);
-}
-
