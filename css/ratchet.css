@@ -1237,7 +1237,7 @@ select {
 .navigate-right:after,
 .push-left:after,
 .push-right:after {
-  position: absolute;
+  position: fixed;
   bottom: 0%;
   display: inline-block;
   font-family: Ratchicons;
