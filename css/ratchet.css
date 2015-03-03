@@ -276,7 +276,7 @@ a:active {
 }
 
 .bar-nav ~ .content {
-  padding-top: 44px;
+  padding-top: 2.3em;
 }
 
 .bar-header-secondary ~ .content {
@@ -494,7 +494,7 @@ input[type="button"] {
   right: 0;
   left: 0;
   z-index: 10;
-  height: 44px;
+  height: 2.2em;
   padding-right: 10px;
   padding-left: 10px;
   background-color: #fff;
@@ -538,7 +538,6 @@ input[type="button"] {
   padding: 0;
   margin: 0 -10px;
   line-height: 44px;
-  color: #000;
   text-align: center;
   white-space: nowrap;
   font-weight: normal;
@@ -633,7 +632,7 @@ input[type="button"] {
   z-index: 20;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 24px;
+  font-size: 1.2em
 }
 .bar .btn .icon {
   top: 3px;
@@ -1472,6 +1471,7 @@ body {
 
 .bar-main {
     background-color: #000 !important;
+    color:white;
 }
 
 .content > .table-view:first-child {
@@ -1680,3 +1680,4 @@ h3.msg{
 #font-small{
   font-size: .9em;
 }
+

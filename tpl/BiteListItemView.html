@@ -1,4 +1,8 @@
-<a href="#bite/<%= id %>" data-ignore="push">
+<% if(isRead == true) { %>
+<a href="#bite/<%= id %>" >
+    <% }else{ %>
+<a href="#bite/<%= id %>" style="background:rgba(0,0,0,.02)">
+    <% } %>
  	<% if (tags) { %>
       <span class="badge <%= tagclass %>"><%= tags %></span>
     <% } %>

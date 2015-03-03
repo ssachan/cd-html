@@ -21,7 +21,7 @@ app.views.BiteListView = Backbone.View.extend({
             }).render().el);
         }, this);
 
-        this.$el.append('<li class="table-view-divider"><button id="loadPrevious" class="btn btn-positive">Load Previous</button><span id="loadPreviousErr" class="badge" style="margin-left: 20px;display:none">No more old bites!</span></li>');
+        this.$el.append('<li class="table-view-divider"><button id="loadPrevious" class="btn btn-primary">Load Previous</button><span id="loadPreviousErr" class="badge" style="margin-left: 20px;display:none">No more old bites!</span></li>');
         return this;
     },
 
@@ -40,13 +40,15 @@ app.views.BiteListView = Backbone.View.extend({
         this.model.fetchPrevious();
     },
     toggleFontSizeToSmall: function(e) {
+        e.preventDefault()
         if (localStorage.getItem('fs') == 'small') {
             return;
         }
         $('body').css('font-size', '1.2em');
         localStorage.setItem('fs', 'small');
     },
-    toggleFontSizeToLarge: function() {
+    toggleFontSizeToLarge: function(e) {
+        e.preventDefault()
         if (localStorage.getItem('fs') == 'large') {
             return;
         }
@@ -63,6 +65,7 @@ app.views.BiteListItemView = Backbone.View.extend({
 
     initialize: function() {
         this.model.on("change:added", this.animate, this);
+        this.model.on("change:isRead", this.read, this);
     },
 
     render: function() {
@@ -71,7 +74,14 @@ app.views.BiteListItemView = Backbone.View.extend({
         return this;
     },
 
-    animate : function(){
-        this.$el.animate({'background': "rgba(0,0,0,.04)"}, 2000);    
+    animate: function() {
+        this.$el.animate({
+            'background': 'rgba(87,173,104,0.1)',
+            'color': '#468c54'
+        }, 2000);
+    },
+
+    read: function() {
+        this.$el.css('background', '#fff');
     }
 });
