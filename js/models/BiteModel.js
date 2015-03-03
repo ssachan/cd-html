@@ -151,7 +151,6 @@ app.models.BiteCollection = Backbone.Collection.extend({
 
     comparator: function(model) {
         return -Date.parse(model.get('post_date'))
-        //return -parseInt(model.id);
     },
 
     error: function(xhr, msg, url) {
@@ -196,12 +195,16 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     if (minId == null || (minId != null && parseInt(data[0].id) < parseInt(minId))) {
                         localStorage.setItem('minId', data[0].id);
                     }*/
+                    for (bite in data) {
+                        (self.get({
+                            'id': data[bite].id
+                        })).set('added', true);
+                    }
                 } else {
                     $('#loadLatestErr').show();
                     setTimeout(function() {
                         $("#loadLatestErr").hide();
                     }, 5000);
-
                 }
             },
             error: function(xhr, msg) {
@@ -222,6 +225,11 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     self.add(data);
                     self.save();
                     localStorage.setItem('minDate', data[data.length - 1].post_date);
+                    for (bite in data) {
+                        (self.get({
+                            'id': data[bite].id
+                        })).set('added', true);
+                    }
                     /*var maxId = localStorage.getItem('maxId');
                     if (maxId == null || (maxId != null && parseInt(maxId) < parseInt(data[0].id))) {
                         localStorage.setItem('maxId', data[0].id);

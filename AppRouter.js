@@ -86,8 +86,12 @@ app.routers.AppRouter = Backbone.Router.extend({
         $('#cid').removeClass('splash');
         var bite;
         if (activeBites == null) {
-            bite = new app.models.Bite({id:id});
-            bite.fetch({ ajaxSync: true });
+            bite = new app.models.Bite({
+                id: id
+            });
+            bite.fetch({
+                ajaxSync: true
+            });
         } else {
             bite = activeBites.get({
                 id: id
@@ -96,6 +100,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         $('#cid').html(new app.views.BiteView({
             model: bite
         }).render().$el);
+        //$(window).scrollTop(0);
         var nextModel = (activeBites) ? activeBites.at(activeBites.indexOf(bite) + 1) : null;
         var previousModel = (activeBites) ? activeBites.at(activeBites.indexOf(bite) - 1) : null;
         if (nextModel) {
