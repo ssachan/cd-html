@@ -40,7 +40,7 @@ app.routers.AppRouter = Backbone.Router.extend({
     home: function() {
         $('.bar-main').show();
         $('#cid').removeClass('splash');
-        if (localStorage.getItem('minId') == null && localStorage.getItem('maxId') == null) {
+        if (localStorage.getItem('minDate') == null && localStorage.getItem('maxDate') == null) {
             //app being loaded for the first time.
             allBites.firstFetch();
         } else {

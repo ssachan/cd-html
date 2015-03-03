@@ -150,7 +150,8 @@ app.models.BiteCollection = Backbone.Collection.extend({
     },
 
     comparator: function(model) {
-        return -parseInt(model.id);
+        return -Date.parse(model.get('post_date'))
+        //return -parseInt(model.id);
     },
 
     error: function(xhr, msg, url) {
@@ -168,8 +169,8 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     console.log("search success: " + data.length);
                     self.add(data);
                     self.save();
-                    localStorage.setItem('minId', data[data.length - 1].id);
-                    localStorage.setItem('maxId', data[0].id);
+                    localStorage.setItem('minDate', data[data.length - 1].post_date);
+                    localStorage.setItem('maxDate', data[0].post_date);
                 }
             },
             error: function(xhr, msg) {
@@ -179,7 +180,7 @@ app.models.BiteCollection = Backbone.Collection.extend({
     },
 
     fetchLatest: function() {
-        var url = env.url + 'wp-admin/admin-ajax.php?action=getMoreBites&maxId=' + localStorage.getItem('maxId');
+        var url = env.url + 'wp-admin/admin-ajax.php?action=getMoreBites&maxDate=' + localStorage.getItem('maxDate');
         var self = this;
         $.ajax({
             url: url,
@@ -189,12 +190,12 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     console.log("search success: " + data.length);
                     self.add(data);
                     self.save();
-                    localStorage.setItem('maxId', data[data.length - 1].id);
+                    localStorage.setItem('maxDate', data[data.length - 1].post_date);
                     /* check for min and update that too */
-                    var minId = localStorage.getItem('minId');
+                    /*var minDate = localStorage.getItem('minDate');
                     if (minId == null || (minId != null && parseInt(data[0].id) < parseInt(minId))) {
                         localStorage.setItem('minId', data[0].id);
-                    }
+                    }*/
                 } else {
                     $('#loadLatestErr').show();
                     setTimeout(function() {
@@ -210,7 +211,7 @@ app.models.BiteCollection = Backbone.Collection.extend({
     },
 
     fetchPrevious: function() {
-        var url = env.url + 'wp-admin/admin-ajax.php?action=getMoreBites&minId=' + localStorage.getItem('minId');
+        var url = env.url + 'wp-admin/admin-ajax.php?action=getMoreBites&minDate=' + localStorage.getItem('minDate');
         var self = this;
         $.ajax({
             url: url,
@@ -220,11 +221,11 @@ app.models.BiteCollection = Backbone.Collection.extend({
                     console.log("search success: " + data.length);
                     self.add(data);
                     self.save();
-                    localStorage.setItem('minId', data[data.length - 1].id);
-                    var maxId = localStorage.getItem('maxId');
+                    localStorage.setItem('minDate', data[data.length - 1].post_date);
+                    /*var maxId = localStorage.getItem('maxId');
                     if (maxId == null || (maxId != null && parseInt(maxId) < parseInt(data[0].id))) {
                         localStorage.setItem('maxId', data[0].id);
-                    }
+                    }*/
                 } else {
                     $('#loadPreviousErr').show();
                     setTimeout(function() {
