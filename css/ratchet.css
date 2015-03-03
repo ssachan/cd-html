@@ -634,6 +634,7 @@ input[type="button"] {
   padding-bottom: 10px;
   font-size: 1.2em
 }
+
 .bar .btn .icon {
   top: 3px;
   padding: 0;
@@ -1637,7 +1638,6 @@ h3.msg{
     border-radius: 0px;
 }
 
-
 .badge-mrunal {
   color: #B87333;
   border: 1px solid #e6d1b4;
@@ -1668,8 +1668,15 @@ h3.msg{
 
 .badge-wiki,.badge-pib {
   color: rgba(0,0,0,0.6);
-  border: 1px solid #f0f0f0;
+  border: 1px solid rgba(0,0,0,0.4);
   background: rgba(0,0,0,0.01);
+  border-radius: 2px;
+}
+
+.badge-upsc {
+  color: #CC1100;
+  border: 1px solid #CC1100;
+  background: #FFE4E1;
   border-radius: 2px;
 }
 

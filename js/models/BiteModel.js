@@ -107,6 +107,7 @@ app.models.Bite = Backbone.Model.extend({
             "wiki": 'badge-wiki',
             "pib": 'badge-pib',
             "insights": 'badge-insights',
+            "upsc": 'badge-upsc',
         }
         if (tagClassMap[tag] != null) {
             return tagClassMap[tag];
