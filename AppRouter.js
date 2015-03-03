@@ -100,7 +100,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         $('#cid').html(new app.views.BiteView({
             model: bite
         }).render().$el);
-        //$(window).scrollTop(0);
+        $('body, html, #cid, .content-padded').scrollTop(0);
         var nextModel = (activeBites) ? activeBites.at(activeBites.indexOf(bite) + 1) : null;
         var previousModel = (activeBites) ? activeBites.at(activeBites.indexOf(bite) - 1) : null;
         if (nextModel) {
