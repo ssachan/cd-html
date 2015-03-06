@@ -13,14 +13,14 @@ app.views.BiteView = Backbone.View.extend({
 
     save: function() {
         this.model.get('isSaved') == false ? this.model.set('isSaved', true) : this.model.set('isSaved', false);
-        window.analytics.trackEvent('WhatsApp Share', 'touch', 'id-' + this.model.id);
+        window.analytics.trackEvent('Bookmark', 'touch', 'id-' + this.model.id);
     },
 
     makeSafe: function(str) {
         var text = str.replace(/<ol>/ig, '').replace(/<\/ol>/ig, '').replace(/<ul>/ig, '').replace(/<\/ul>/ig, '').replace(/<hr\/>/ig, '');
         var text = text.replace(/<li>/ig, '# ');
         var text = text.replace(/<\/li>/ig, '\r\n');
-        return text;
+        return text.split('<hr','1');
         var text = text.replace(/(<([^>]+)>)/ig, '');
         text = encodeURI(text);
         text = text.replace(/%20/g, ' ').replace(/%[a-zA-Z0-9][a-zA-Z0-9]/g, '');
@@ -37,7 +37,7 @@ app.views.BiteView = Backbone.View.extend({
     },
 
     render: function() {
-        //console.log('<bold>' + this.model.get('post_title') + '</bold>\r\n' + this.makeSafe(this.model.get('post_content')));
+        //console.log('## ' + this.model.get('post_title') + ' ##\r\n' + this.makeSafe(this.model.get('post_content')));
         this.$el.html(this.template(this.model.attributes));
         return this;
     }
