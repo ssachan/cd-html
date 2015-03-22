@@ -1,4 +1,4 @@
-        <% if (post_title) { %>
+<% if (post_title) { %>
     <h4 class="clearfix" style="line-height: 2;color:<%=ccolor%>;">
         <span class="badge category" style="background-color:<%=ccolor%>;"> </span>
         <%=category%>
@@ -10,11 +10,16 @@
     </h4>
     <h3><%= post_title %></h3>
     <%=post_content%>
-        <% if (link) { %>
-            <div class="source">Source:
-                <a href="<%=link%>" data-ignore="push">
-                    <%=source%>
-                </a>
-            </div>
-            <% } %>
-            <% } %>
+    <% if (discuss) { %>
+        <hr>
+        <div class="discuss"><b>Discuss:</b>
+            <%=discuss%>
+        </div>
+        <hr>
+    <% } %>
+    <% if (link) { %>
+        <div class="source">Source:
+            <a href="<%=link%>" data-ignore="push"><%=source%></a>
+        </div>
+    <% } %>
+<% } %>

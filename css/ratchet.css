@@ -1475,6 +1475,11 @@ body {
     color:white;
 }
 
+.content-padded hr{
+  margin: 20px 10px;
+  border-color: #fff;
+}
+
 .content > .table-view:first-child {
   margin-top: 0px !important;
   border-top: 0px !important;
@@ -1494,6 +1499,10 @@ body {
   color: white;
   vertical-align: middle;
   margin-right: 5px;
+}
+
+.discuss{
+  color:#3366ff
 }
 
 .source {
@@ -1548,7 +1557,6 @@ body {
 }
 
 /* Error Screen */
-
 .error {
     font-weight: 100;
     padding: 50px;
@@ -1578,7 +1586,6 @@ body {
     margin-top: 15px;
     border-top: 1px solid #ddd;
 }
-
 
 .saved {
 background: url('../img/sprite.png') no-repeat -38px -36px !important;
@@ -1653,9 +1660,9 @@ h3.msg{
 }
 
 .badge-forumias {
-  color: #694489;
-  border: 1px solid #bebde9;
-  background: #FDF8FF;
+  color: #EB218F;
+  border: 1px solid #EB218F;
+  background: white;
   border-radius: 2px;
 }
 
@@ -1677,6 +1684,13 @@ h3.msg{
   color: #CC1100;
   border: 1px solid #CC1100;
   background: #FFE4E1;
+  border-radius: 2px;
+}
+
+.badge-civils {
+  color: #468c54;
+  border: 1px solid #a9d8b2;
+  background: rgba(87,173,104,0.1);
   border-radius: 2px;
 }
 

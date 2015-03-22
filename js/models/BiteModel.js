@@ -77,7 +77,10 @@ app.models.Bite = Backbone.Model.extend({
             "timesofindia": "The Times Of India",
             "bbc.com": "BBC",
             "business-standard.com": "Business Standard",
-            "indianexpress.com": "The Indian Express"
+            "indianexpress.com": "The Indian Express",
+            "mrunal.org": "Mrunal",
+            "gktoday.in": "GKToday",
+            "insightsonindia.com": "Insights",
         };
         for (str in sourceMap) {
             if (link != null && link.indexOf(str) > -1) {
@@ -108,14 +111,17 @@ app.models.Bite = Backbone.Model.extend({
             "pib": 'badge-pib',
             "insights": 'badge-insights',
             "upsc": 'badge-upsc',
+            "civils": 'badge-civils'
         }
         if (tagClassMap[tag] != null) {
             return tagClassMap[tag];
         }
-        return 'badge-primary'
+        return 'badge-primary';
     },
 
     initialize: function() {
+        if(!this.get('discuss'))
+            this.set('discuss', null);
         this.set('ccolor', this.categoryColorMap[this.get('category')]);
         this.set('tagclass', this.tagToClassName(this.get('tags')));
         this.set('source', this.parseSourceName(this.get('link')));
