@@ -39,6 +39,7 @@ app.views.BiteView = Backbone.View.extend({
 
     sourceClick: function(){
         window.open(this.model.get('link'), '_blank', 'location=yes');
+        window.analytics.trackEvent('Source Click', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
     },
 
     render: function() {

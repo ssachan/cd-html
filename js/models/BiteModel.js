@@ -81,6 +81,18 @@ app.models.Bite = Backbone.Model.extend({
             "mrunal.org": "Mrunal",
             "gktoday.in": "GKToday",
             "insightsonindia.com": "Insights",
+            "hindustantimes.com": "HT",
+            "http://pib.nic.in" : "PIB",
+            "http://en.wikipedia.org": "Wiki",
+            "nytimes.com": "NYT",
+            "ccrtindia.gov.in": "ccrt",
+            "thediplomat.com": "The Diplomat",
+            "downtoearth.org.in": "Down to Earth",
+            "idsa.in": "idsa",
+            "frontline.in": "Frontline",
+            "business-standard.com": "Business Stan",
+            "thehindubusinessline.com": "The Hindu BL",
+            "livemint.com": "Live Mint"
         };
         for (str in sourceMap) {
             if (link != null && link.indexOf(str) > -1) {
