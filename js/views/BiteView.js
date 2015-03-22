@@ -8,7 +8,8 @@ app.views.BiteView = Backbone.View.extend({
 
     events: {
         "touchend .save": "save",
-        "touchend .icon.whatsapp": "whatsappShare"
+        "touchend .icon.whatsapp": "whatsappShare",
+        "touchend .btn.btn-primary" : "sourceClick"
     },
 
     save: function() {
@@ -34,6 +35,10 @@ app.views.BiteView = Backbone.View.extend({
             window.analytics.trackException("Sharing Failed, "+msg+", id-"+this.model.id, true);
         });
         window.analytics.trackEvent('WhatsApp Share', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
+    },
+
+    sourceClick: function(){
+        window.open(this.model.get('link'), '_blank', 'location=yes');
     },
 
     render: function() {
