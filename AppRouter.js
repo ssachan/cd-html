@@ -34,6 +34,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             el: $('#cid')
         });
         app.SplashScreenView.render();
+        window.analytics.trackView('Login');
         //$('#cid').html(app.SplashScreenView.render().el);
     },
 
@@ -51,6 +52,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             model: activeBites
         });
         $('#cid').html(app.BiteListView.render().el);
+        window.analytics.trackView('Latest');
     },
 
     savedList: function() {
@@ -65,6 +67,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         });
         $('#cid').html(app.BiteListView.render().el);
         $('.table-view-divider').hide();
+        window.analytics.trackView('Bookmarked');
     },
 
     unreadList: function() {
@@ -112,5 +115,6 @@ app.routers.AppRouter = Backbone.Router.extend({
             $('#cid').append('<a href="#bite/' + previousModel.id + '" class="circle-nav navigate-left circle-small circle-left"></a>');
         }
         bite.set('isRead', true);
+        window.analytics.trackView('Flashcard');
     }
 });

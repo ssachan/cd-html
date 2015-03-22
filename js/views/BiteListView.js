@@ -34,11 +34,14 @@ app.views.BiteListView = Backbone.View.extend({
 
     loadLatest: function() {
         this.model.fetchLatest();
+        window.analytics.trackEvent('LatestButton', 'user-' + localStorage.getItem('email'), localStorage.getItem('maxDate'));
     },
 
     loadPrevious: function() {
         this.model.fetchPrevious();
+        window.analytics.trackEvent('PreviousButton', 'user-' + localStorage.getItem('email'), localStorage.getItem('minDate'));
     },
+
     toggleFontSizeToSmall: function(e) {
         e.preventDefault()
         if (localStorage.getItem('fs') == 'small') {

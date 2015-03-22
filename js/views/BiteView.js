@@ -13,7 +13,7 @@ app.views.BiteView = Backbone.View.extend({
 
     save: function() {
         this.model.get('isSaved') == false ? this.model.set('isSaved', true) : this.model.set('isSaved', false);
-        window.analytics.trackEvent('Bookmark', 'touch', 'id-' + this.model.id);
+        window.analytics.trackEvent('Bookmark', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
     },
 
     makeSafe: function(str) {
@@ -33,7 +33,7 @@ app.views.BiteView = Backbone.View.extend({
         }, function(msg) {
             window.analytics.trackException("Sharing Failed, "+msg+", id-"+this.model.id, true);
         });
-        window.analytics.trackEvent('WhatsApp Share', 'touch', 'id-' + this.model.id);
+        window.analytics.trackEvent('WhatsApp Share', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
     },
 
     render: function() {
