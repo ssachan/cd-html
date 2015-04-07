@@ -249,13 +249,13 @@ body {
 }
 
 a {
-  color: #428bca;
+  color: #57ad68;
   text-decoration: none;
 
   -webkit-tap-highlight-color: transparent;
 }
 a:active {
-  color: #3071a9;
+  color: #468c54;
 }
 
 .content {
@@ -389,9 +389,12 @@ p {
 
 .btn-primary {
   color: #fff;
-  background-color: #428bca;
-  border: 1px solid #428bca;
+  background-color: #51b364;
+  border: 1px solid #57ad68;
+  font-size: .6em;
+  border-radius:999em;
 }
+
 .btn-primary:active, .btn-primary.active {
   color: #fff;
   background-color: #3071a9;
