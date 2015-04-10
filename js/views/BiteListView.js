@@ -20,7 +20,7 @@ app.views.BiteListView = Backbone.View.extend({
                 model: bite
             }).render().el);
         }, this);
-        this.$el.append('<li class="table-view-divider" id="previouswrapper"><button id="loadPrevious" class="btn btn-primary">Load Previous</button><span id="loadPreviousErr" class="badge" style="margin-left: 20px;display:none">No more old bites!</span></li>');
+        this.$el.append('<li class="table-view-divider" id="previouswrapper"><button id="loadPrevious" class="btn btn-primary">Load Previous</button><span id="loadPreviousErr" class="badge" style="margin-left: 10px;display:none">No more old bites!</span></li>');
         return this;
     },
 

@@ -152,7 +152,6 @@ app.models.Bite = Backbone.Model.extend({
             model.save();
         });
     }
-
 });
 
 app.models.BiteCollection = Backbone.Collection.extend({
