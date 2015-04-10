@@ -52,6 +52,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             model: activeBites
         });
         $('#cid').html(app.BiteListView.render().el);
+        $('#filters').hide();
         window.analytics.trackView('Latest');
     },
 
@@ -66,7 +67,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             model: activeBites
         });
         $('#cid').html(app.BiteListView.render().el);
-        $('.table-view-divider').hide();
+        $('#previouswrapper,#latestwrapper').hide();
         window.analytics.trackView('Bookmarked');
     },
 

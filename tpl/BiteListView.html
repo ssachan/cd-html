@@ -1,4 +1,4 @@
-<li class="table-view-divider clearfix">
+<li class="table-view-divider clearfix" id="latestwrapper">
     <button id="loadLatest" class="btn btn-primary">Load Latest</button><span id="loadLatestErr" class="badge" style="margin-left: 20px;display:none">Nothing new added!</span>
     <div class="segmented-control pull-right">
         <% if (fs=='small') { %>
@@ -12,4 +12,8 @@
             <a id="font-large" class="control-item">A</a>
         <% }%>
     </div>
+</li>
+<li class="table-view-divider clearfix" id="filters">
+    <input type="search" id="text-search" placeholder="Search">
+    <a href="#popover" class="btn pull-right btn-filter"> Filters </a>
 </li>

@@ -34,12 +34,12 @@ app.views.BiteView = Backbone.View.extend({
         }, function(msg) {
             window.analytics.trackException("Sharing Failed, "+msg+", id-"+this.model.id, true);
         });
-        window.analytics.trackEvent('WhatsApp Share', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
+        window.analytics.trackEvent('WhatsApp Share', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);        
     },
 
     sourceClick: function(){
         window.open(this.model.get('link'), '_blank', 'location=yes');
-        window.analytics.trackEvent('Source Click', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
+        window.analytics.trackEvent('Source Click', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);        
     },
 
     render: function() {

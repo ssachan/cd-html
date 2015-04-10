@@ -24,7 +24,6 @@ app.models.Account = Backbone.Model.extend({
 
     success: function(e) {
         //do nothing
-
     },
 
     login: function() {
@@ -264,6 +263,15 @@ app.models.BiteCollection = Backbone.Collection.extend({
                 self.error(xhr, msg, url);
             }
         });
+    },
+
+    textSearch : function(letters){
+        if(letters == "") return this;
+        var pattern = new RegExp(letters,"gi");
+        var filteredList = _(this.filter(function(data) {
+            return pattern.test(data.get("post_title"));
+        }));
+        return new app.models.BiteCollection(filteredList);
     }
 });
 
