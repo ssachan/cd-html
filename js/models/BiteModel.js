@@ -270,7 +270,7 @@ app.models.BiteCollection = Backbone.Collection.extend({
         var filteredList = _(this.filter(function(data) {
             return pattern.test(data.get("post_title"));
         }));
-        return new app.models.BiteCollection(filteredList);
+        return new app.models.BiteCollection(filteredList.__wrapped__);
     }
 });
 
