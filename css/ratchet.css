@@ -342,7 +342,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: .8em;
+  font-size: .9em;
 }
 
 h5, .h5 {
@@ -1660,21 +1660,35 @@ h3.msg{
 .badge-forumias {
   color: #EB218F;
   border: 1px solid #EB218F;
-  background: white;
+  background: #fff0f5;
   border-radius: 2px;
 }
 
 .badge-insights {
   color: #1e73be;
   border: 1px solid #1e73be;
-  background: rgba(255,255,255,0.8);
+  background: #edf6fb;
   border-radius: 2px;
 }
 
-.badge-wiki,.badge-pib {
+.badge-wiki {
   color: rgba(0,0,0,0.6);
   border: 1px solid rgba(0,0,0,0.4);
   background: rgba(0,0,0,0.01);
+  border-radius: 2px;
+}
+
+.badge-pib {
+  color: #f6aa11;
+  border: 1px solid #f6aa11;
+  background: #fef6e7;
+  border-radius: 2px;
+}
+
+.badge-ccrt {
+  color: #b55757;
+  border: 1px solid #b55757;
+  background: #f5eaea;
   border-radius: 2px;
 }
 

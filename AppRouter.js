@@ -68,6 +68,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         });
         $('#cid').html(app.BiteListView.render().el);
         $('#previouswrapper,#latestwrapper').hide();
+        $('#filters').show();
         window.analytics.trackView('Bookmarked');
     },
 

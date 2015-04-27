@@ -122,7 +122,8 @@ app.models.Bite = Backbone.Model.extend({
             "pib": 'badge-pib',
             "insights": 'badge-insights',
             "upsc": 'badge-upsc',
-            "civils": 'badge-civils'
+            "civils": 'badge-civils',
+            "ccrt": 'badge-ccrt'
         }
         if (tagClassMap[tag] != null) {
             return tagClassMap[tag];
@@ -268,6 +269,7 @@ app.models.BiteCollection = Backbone.Collection.extend({
         if(letters == "") return this;
         var pattern = new RegExp(letters,"gi");
         var filteredList = _(this.filter(function(data) {
+            pattern.lastIndex= 0;
             return pattern.test(data.get("post_title"));
         }));
         return new app.models.BiteCollection(filteredList.__wrapped__);
