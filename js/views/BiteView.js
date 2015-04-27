@@ -9,7 +9,7 @@ app.views.BiteView = Backbone.View.extend({
     events: {
         "touchend .save": "save",
         "touchend .icon.whatsapp": "whatsappShare",
-        "touchend .btn.btn-primary" : "sourceClick"
+        "touchend .btn.btn-primary": "sourceClick"
     },
 
     save: function() {
@@ -21,7 +21,7 @@ app.views.BiteView = Backbone.View.extend({
         var text = str.replace(/<ol>/ig, '').replace(/<\/ol>/ig, '').replace(/<ul>/ig, '').replace(/<\/ul>/ig, '').replace(/<hr\/>/ig, '');
         var text = text.replace(/<li>/ig, '# ');
         var text = text.replace(/<\/li>/ig, '\r\n');
-        return text.split('<hr','1');
+        return text.split('<hr', '1');
         var text = text.replace(/(<([^>]+)>)/ig, '');
         text = encodeURI(text);
         text = text.replace(/%20/g, ' ').replace(/%[a-zA-Z0-9][a-zA-Z0-9]/g, '');
@@ -32,19 +32,20 @@ app.views.BiteView = Backbone.View.extend({
         window.plugins.socialsharing.shareViaWhatsApp('## ' + this.model.get('post_title') + ' ##\r\n' + this.makeSafe(this.model.get('post_content')), null, this.model.get('link'), function() {
             console.log('share ok')
         }, function(msg) {
-            window.analytics.trackException("Sharing Failed, "+msg+", id-"+this.model.id, true);
+            window.analytics.trackException("Sharing Failed, " + msg + ", id-" + this.model.id, true);
         });
-        window.analytics.trackEvent('WhatsApp Share', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);        
+        window.analytics.trackEvent('WhatsApp Share', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
     },
 
-    sourceClick: function(){
+    sourceClick: function() {
         window.open(this.model.get('link'), '_blank', 'location=yes');
-        window.analytics.trackEvent('Source Click', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);        
+        window.analytics.trackEvent('Source Click', 'user-' + localStorage.getItem('email'), 'id-' + this.model.id);
     },
 
     render: function() {
         //console.log('## ' + this.model.get('post_title') + ' ##\r\n' + this.makeSafe(this.model.get('post_content')));
         this.$el.html(this.template(this.model.attributes));
+        this.$el.attr('style','border-top:5px solid '+this.model.get('ccolor'))
         return this;
     }
 

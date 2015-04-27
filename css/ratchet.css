@@ -249,13 +249,13 @@ body {
 }
 
 a {
-  color: #57ad68;
+  color: #fff;
   text-decoration: none;
 
   -webkit-tap-highlight-color: transparent;
 }
 a:active {
-  color: #468c54;
+  color: #ddd;
 }
 
 .content {
@@ -872,7 +872,7 @@ input[type="search"] {
   padding: 0 15px;
   font-size: 16px;
   border-radius: 20px;
-  width: 75%;
+  width: 90%;
   font-weight: 100;
 }
 
